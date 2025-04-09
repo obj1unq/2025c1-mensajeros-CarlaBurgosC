@@ -6,7 +6,6 @@ object wollok {
 }*/
 
 object brooklyn {
-	var peso = 900
 
 	method puedeViajar(unViajero){
 		return unViajero.peso() <= 1000
@@ -58,29 +57,28 @@ object neo{
 
 ////HACK
 object hawk{
-	var peso = 0
 	var pesoPropio = 0
-	var vehiculo = null
-	const puedeLlamar = false
+	var vehiculo = bicicleta
+	//const puedeLlamar = false
 
 	method pesoPropio(){
 		return pesoPropio
 	}
+
 	method pesoPropio(_unPeso){
 		pesoPropio = _unPeso
 	}
 
-	method peso(){
-		peso = self.pesoTotal()
+	method vehiculo(_unVehiculo){
+		vehiculo = _unVehiculo
 	}
 
-
-	method pesoTotal(_unVehiculo){
-		return _unVehiculo.peso() + self.pesoPropio()
+	method peso(){
+		return vehiculo.peso () + self.pesoPropio()
 	}
 
 	method puedeLlamar(){
-		return puedeLlamar
+		return false
 	}
 
 }
@@ -90,5 +88,10 @@ object bicicleta{
 }
 
 object camion{
-	var property peso = 500
+	var property pesoCamion = 500
+	var property cantAcoplado = 2
+
+	method peso(){
+		return pesoCamion + pesoCamion * cantAcoplado
+	}
 }
